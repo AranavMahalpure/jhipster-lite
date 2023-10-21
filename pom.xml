@@ -465,6 +465,9 @@
             <goals>
               <goal>npm</goal>
             </goals>
+            <configuration>
+              <arguments>ci --no-audit</arguments>
+            </configuration>
           </execution>
           <execution>
             <id>build front</id>

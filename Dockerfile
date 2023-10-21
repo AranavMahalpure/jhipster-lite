@@ -1,5 +1,5 @@
 FROM openjdk:17-slim AS build
-RUN apt-get update && apt-get -y install git && apt-get clean
+RUN apt-get update && apt-get -y install git curl && apt-get clean
 COPY . /code/jhipster-app/
 WORKDIR /code/jhipster-app/
 RUN chmod +x mvnw && ./mvnw package -B -DskipTests -Dmaven.javadoc.skip=true -Dmaven.source.skip
