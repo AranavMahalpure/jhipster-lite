@@ -9,6 +9,7 @@ RUN \
     cd /code/jhipster-app/ && \
     rm -rf target node_modules && \
     chmod +x mvnw && \
+    apt-get update && apt-get -y install git && apt-get clean && \
     ./mvnw package -DskipTests -Dmaven.javadoc.skip=true -Dmaven.source.skip && \
     # copy jar and clean unused files and folders
     mv /code/jhipster-app/target/*.jar /code/ && \
