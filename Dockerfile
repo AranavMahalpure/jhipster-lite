@@ -1,8 +1,9 @@
 FROM openjdk:17-slim AS build
-RUN apt-get update && apt-get -y install git curl && apt-get clean
 COPY . /code/jhipster-app/
 WORKDIR /code/jhipster-app/
-RUN chmod +x mvnw && ./mvnw package -B -DskipTests -Dmaven.javadoc.skip=true -Dmaven.source.skip
+RUN chmod +x mvnw && \
+    ./mvnw clean package -B -DskipTests -Dmaven.javadoc.skip=true -Dmaven.source.skip \
+    -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 RUN mv /code/jhipster-app/target/*.jar /code/ && \
     rm -rf /code/*-tests.jar
 
